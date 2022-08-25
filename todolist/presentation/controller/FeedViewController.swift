@@ -13,7 +13,7 @@ class FeedViewController: UITableViewController {
     private let defaultCellIdentifier = Constants.Identifiers.DefaultViewCellIdentifier
     private let customCellIdentifier = Constants.Identifiers.CustomViewCellIdentifier
     private let repository = TaskRepository.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +26,10 @@ class FeedViewController: UITableViewController {
     }
 }
 
-extension FeedViewController {
+extension FeedViewController{
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
@@ -66,11 +69,6 @@ extension FeedViewController {
             
             updateTasks()
         }
-    }
-    
-    private func updateTasks(){
-        tasks = repository.tasks
-        tableView.reloadData()
     }
 }
 
@@ -113,6 +111,10 @@ extension FeedViewController {
 extension FeedViewController : TaskViewControllerDelegate  {
     func refreshData() {
         self.updateTasks()
+    }
+    private func updateTasks(){
+        tasks = repository.tasks
+        tableView.reloadData()
     }
 }
 

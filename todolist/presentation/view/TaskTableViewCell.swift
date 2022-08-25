@@ -19,17 +19,30 @@ class TaskTableViewCell: UITableViewCell {
     
    
     @IBOutlet weak var titleEditText: UILabel!
-   
+    @IBOutlet weak var descriptionEditText: UILabel!
     @IBOutlet weak var checkBoxImageView: UIImageView!
     
-    var state : CheckBoxState = .unselected
     var indexPath : IndexPath?
+    
     private var _task : Task = Task()
+    private var _state : CheckBoxState = .unselected
+    
+    var state : CheckBoxState {
+        get {
+            return _state
+        }
+        set {
+            _state = newValue
+            setCheckBoxImage()
+        }
+    }
     
     var task : Task {
         set {
             _task = newValue
             titleEditText.text = _task.title
+            descriptionEditText.text =
+            _task.subtitle
         }
         get {
             return _task
@@ -43,7 +56,11 @@ class TaskTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        toggleCheckboxImage()
+        
+        setCheckBoxImage()
+        
+        _state = .unselected
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(checkBoxImagePressed))
         
         checkBoxImageView.isUserInteractionEnabled = true
@@ -51,9 +68,10 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     @objc private func checkBoxImagePressed(recognizer: UITapGestureRecognizer){
-        state = (state == .selected) ? .unselected : .selected
-        toggleCheckboxImage()
-        if(state == .selected){
+        _state = (_state == .selected) ? .unselected : .selected
+        setCheckBoxImage()
+        
+        if(_state == .selected){
             if let indexPath = indexPath {
                 delegate?.onTaskCompleted(indexPath: indexPath)
             }
@@ -61,8 +79,8 @@ class TaskTableViewCell: UITableViewCell {
         
     }
     
-    private func toggleCheckboxImage() {
-        checkBoxImageView.image = (state == .selected) ? selectedImage : unselectedImage
+    private func setCheckBoxImage() {
+        checkBoxImageView.image = (_state == .selected) ? selectedImage : unselectedImage
     }
     
 }
