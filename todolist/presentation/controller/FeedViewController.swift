@@ -11,8 +11,7 @@ class FeedViewController: UITableViewController {
     
     private var tasks  = [Task]()
     private let defaultCellIdentifier = Constants.Identifiers.DefaultViewCellIdentifier
-    private let customCellIdentifier =
-    Constants.Identifiers.CustomViewCellIdentifier
+    private let customCellIdentifier = Constants.Identifiers.CustomViewCellIdentifier
     private let repository = TaskRepository.shared
 
     override func viewDidLoad() {
@@ -21,7 +20,7 @@ class FeedViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellIdentifier)
-        tableView.register(UINib(nibName: Constants.NIbNames.TaskTableViewCellNibName, bundle: nil), forCellReuseIdentifier: customCellIdentifier)
+        tableView.register(UINib(nibName: Constants.NibNames.TaskTableViewCellNibName, bundle: nil), forCellReuseIdentifier: customCellIdentifier)
         
         updateTasks()
     }
@@ -34,7 +33,7 @@ extension FeedViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as!TaskTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! TaskTableViewCell
         
         cell.task = tasks[indexPath.row]
         cell.delegate = self

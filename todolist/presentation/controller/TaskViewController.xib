@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController" customModule="todolist" customModuleProvider="target">
             <connections>
-                <outlet property="descriptionTextField" destination="cKg-kx-d5Y" id="0ej-ik-DMz"/>
-                <outlet property="titleTextField" destination="oPD-1U-VTX" id="t8Y-Wl-c7C"/>
+                <outlet property="descriptionTextField" destination="b8x-OF-237" id="f0s-pu-rTT"/>
+                <outlet property="titleTextField" destination="PM2-0m-8a1" id="8h8-uJ-L49"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,38 +20,38 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WER-wf-goN">
-                    <rect key="frame" x="20" y="63" width="300" height="57.333333333333343"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-eN-Rs2">
+                    <rect key="frame" x="39" y="93" width="350" height="57.333333333333343"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oPD-1U-VTX">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="18.666666666666668"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PM2-0m-8a1">
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="18.666666666666668"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <action selector="titleTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="9vN-ee-C9P"/>
+                                <action selector="titleTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="EcU-JU-8bn"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-kx-d5Y">
-                            <rect key="frame" x="0.0" y="38.666666666666671" width="300" height="18.666666666666671"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-OF-237">
+                            <rect key="frame" x="0.0" y="38.666666666666657" width="350" height="18.666666666666671"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="350" id="1o2-e3-JjA"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <action selector="descriptionTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="LX4-UJ-MOy"/>
+                                <action selector="descriptionTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="adr-CN-OR7"/>
                             </connections>
                         </textField>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="300" id="igb-jD-BBM"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="WER-wf-goN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="R5Y-mI-pAL"/>
-                <constraint firstItem="WER-wf-goN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="19" id="fQd-9D-VgL"/>
+                <constraint firstItem="BlC-eN-Rs2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="luW-HG-bep"/>
+                <constraint firstItem="BlC-eN-Rs2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="49" id="pcq-rW-hZc"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
+            <point key="canvasLocation" x="137.38317757009344" y="113.39092872570195"/>
         </view>
     </objects>
     <resources>

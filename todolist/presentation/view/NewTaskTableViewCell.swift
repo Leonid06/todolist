@@ -1,5 +1,5 @@
 //
-//  TaskTableViewCell.swift
+//  NewTaskTableViewCell.swift
 //  todolist
 //
 //  Created by Leonid on 25.08.2022.
@@ -17,9 +17,7 @@ protocol TaskTableViewCellDelegate {
 
 class TaskTableViewCell: UITableViewCell {
     
-   
     @IBOutlet weak var titleEditText: UILabel!
-   
     @IBOutlet weak var checkBoxImageView: UIImageView!
     
     var state : CheckBoxState = .unselected
