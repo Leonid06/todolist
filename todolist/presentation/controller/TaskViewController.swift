@@ -34,7 +34,7 @@ class TaskViewController: UIViewController, UIPopoverPresentationControllerDeleg
     init(task : Task){
         
         self.task = task
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = Constants.DateFormat
         
         super.init(nibName: nil, bundle: nil)
     }

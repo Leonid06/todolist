@@ -17,10 +17,10 @@ extension Task {
     }
 
     @NSManaged public var completed: Bool
-    @NSManaged public var deadline: Int64
+    @NSManaged public var deadline: String?
+    @NSManaged public var scheduled: Bool
     @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
-    @NSManaged public var scheduled: Bool
 
 }
 

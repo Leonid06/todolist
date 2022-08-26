@@ -16,6 +16,6 @@ struct Constants {
     struct NibNames {
         static let TaskTableViewCellNibName = "TaskTableViewCell"
         static let ScheduledTaskTableViewCellNibName = "ScheduledTaskTableViewCell"
-   
     }
+    static let DateFormat = "dd/MM/yyyy"
 }

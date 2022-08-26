@@ -31,7 +31,6 @@ class TaskTableViewCell: UITableViewCell {
     private var _task : Task = Task()
     private var state : CheckBoxState = .unselected
     
-    
     var task : Task {
         set {
             _task = newValue

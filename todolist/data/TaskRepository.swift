@@ -16,6 +16,7 @@ class TaskRepository {
     
     private var tasks = [Task]()
     static let shared = TaskRepository()
+    private let dateFormatter = DateFormatter()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func addTask(title : String, description: String, deadline : NSDate){
@@ -53,8 +54,8 @@ class TaskRepository {
     
     func addDeadlineToTask(_ task : Task, deadline: Date){
         task.scheduled = true
+        task.deadline = dateFormatter.string(from: deadline)
         saveContext()
-        // TODO: add dateformatting
     }
     
     
