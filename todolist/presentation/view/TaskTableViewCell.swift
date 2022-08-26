@@ -13,9 +13,13 @@ enum CheckBoxState {
 
 protocol TaskTableViewCellDelegate {
     func onTaskCompleted(indexPath : IndexPath)
+    func onTaskUndo(indexPath: IndexPath)
 }
 
 class TaskTableViewCell: UITableViewCell {
+    
+    private let selectedImage = UIImage(systemName: "checkmark.circle.fill")
+    private let unselectedImage = UIImage(systemName: "circle")
     
    
     @IBOutlet weak var titleEditText: UILabel!
@@ -25,41 +29,27 @@ class TaskTableViewCell: UITableViewCell {
     var indexPath : IndexPath?
     
     private var _task : Task = Task()
-    private var _state : CheckBoxState = .unselected
+    private var state : CheckBoxState = .unselected
     
-    var state : CheckBoxState {
-        get {
-            return _state
-        }
-        set {
-            _state = newValue
-            setCheckBoxImage()
-        }
-    }
     
     var task : Task {
         set {
             _task = newValue
             titleEditText.text = _task.title
-            descriptionEditText.text =
-            _task.subtitle
+            descriptionEditText.text = _task.subtitle
+            state = task.completed ? .selected : .unselected
+            setCheckBoxImage()
         }
         get {
             return _task
         }
     }
     
-    private let selectedImage = UIImage(systemName: "checkmark.circle.fill")
-    private let unselectedImage = UIImage(systemName: "circle")
-    
     var delegate : TaskTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setCheckBoxImage()
-        
-        _state = .unselected
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(checkBoxImagePressed))
         
@@ -68,19 +58,23 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     @objc private func checkBoxImagePressed(recognizer: UITapGestureRecognizer){
-        _state = (_state == .selected) ? .unselected : .selected
+        state = (state == .selected) ? .unselected : .selected
         setCheckBoxImage()
         
-        if(_state == .selected){
+        if(state == .selected){
             if let indexPath = indexPath {
                 delegate?.onTaskCompleted(indexPath: indexPath)
+            }
+        }else {
+            if let indexPath = indexPath {
+                delegate?.onTaskUndo(indexPath: indexPath)
             }
         }
         
     }
     
     private func setCheckBoxImage() {
-        checkBoxImageView.image = (_state == .selected) ? selectedImage : unselectedImage
+        checkBoxImageView.image = (state == .selected) ? selectedImage : unselectedImage
     }
     
 }

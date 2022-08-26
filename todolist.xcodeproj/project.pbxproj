@@ -23,6 +23,7 @@
 		B387590828B4C539009C12E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B387590728B4C539009C12E5 /* Assets.xcassets */; };
 		B387590B28B4C539009C12E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B387590928B4C539009C12E5 /* LaunchScreen.storyboard */; };
 		B387592028B4CB26009C12E5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387591F28B4CB26009C12E5 /* TaskRepository.swift */; };
+		B3B7F5BF28B8BC3D000EEA3E /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B7F5BE28B8BC3D000EEA3E /* CompletedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B387590A28B4C539009C12E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B387590C28B4C539009C12E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B387591F28B4CB26009C12E5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		B3B7F5BE28B8BC3D000EEA3E /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		F1E776A182F372E11DC96184 /* Pods_todolist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todolist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8ACEE1C5373ACE05570325 /* Pods-todolist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolist.debug.xcconfig"; path = "Target Support Files/Pods-todolist/Pods-todolist.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 				B38758FF28B4C538009C12E5 /* FeedViewController.swift */,
 				B35EA8F228B6132F00B4592B /* TaskViewController.swift */,
 				B35EA8F328B6132F00B4592B /* TaskViewController.xib */,
+				B3B7F5BE28B8BC3D000EEA3E /* CompletedViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				B35EA8E528B51A5A00B4592B /* Task+CoreDataProperties.swift in Sources */,
 				B387590628B4C538009C12E5 /* todolist.xcdatamodeld in Sources */,
 				B35EA8F428B6132F00B4592B /* TaskViewController.swift in Sources */,
+				B3B7F5BF28B8BC3D000EEA3E /* CompletedViewController.swift in Sources */,
 				B387592028B4CB26009C12E5 /* TaskRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

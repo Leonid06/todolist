@@ -21,22 +21,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-eN-Rs2">
-                    <rect key="frame" x="39" y="93" width="350" height="57.333333333333343"/>
+                    <rect key="frame" x="39" y="93" width="350" height="71.333333333333314"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PM2-0m-8a1">
-                            <rect key="frame" x="0.0" y="0.0" width="350" height="18.666666666666668"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="25.666666666666668"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <action selector="titleTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="EcU-JU-8bn"/>
                             </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8x-OF-237">
-                            <rect key="frame" x="0.0" y="38.666666666666657" width="350" height="18.666666666666671"/>
+                            <rect key="frame" x="0.0" y="45.666666666666657" width="350" height="25.666666666666671"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="350" id="1o2-e3-JjA"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <action selector="descriptionTextFieldDidEditing:" destination="-1" eventType="editingDidEnd" id="adr-CN-OR7"/>

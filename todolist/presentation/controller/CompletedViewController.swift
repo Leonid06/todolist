@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  CompletedViewController.swift
 //  todolist
 //
-//  Created by Leonid on 23.08.2022.
+//  Created by Leonid on 26.08.2022.
 //
 
 import UIKit
 
-class FeedViewController: UITableViewController {
-    
+class CompletedViewController: UITableViewController {
+
     private var tasks  = [Task]()
     private let defaultCellIdentifier = Constants.Identifiers.DefaultViewCellIdentifier
     private let customCellIdentifier = Constants.Identifiers.CustomViewCellIdentifier
@@ -30,7 +30,7 @@ class FeedViewController: UITableViewController {
     }
 }
 
-extension FeedViewController{
+extension CompletedViewController{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }
@@ -75,7 +75,7 @@ extension FeedViewController{
     }
 }
 
-extension FeedViewController {
+extension CompletedViewController {
     @IBAction func addButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Add new task", message: nil, preferredStyle: .alert)
         
@@ -111,28 +111,28 @@ extension FeedViewController {
     }
 }
 
-extension FeedViewController : TaskViewControllerDelegate  {
+extension CompletedViewController : TaskViewControllerDelegate  {
     func refreshData() {
         self.updateTasks()
     }
     private func updateTasks(){
-        tasks = repository.fetchTasks(mode: .incompleted)
+        tasks = repository.fetchTasks(mode: .completed)
         tableView.reloadData()
     }
 }
 
-extension FeedViewController : TaskTableViewCellDelegate {
+extension CompletedViewController : TaskTableViewCellDelegate {
     func onTaskCompleted(indexPath : IndexPath) {
-        let task = tasks[indexPath.row]
-        repository.completeTask(task)
-        tasks.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
-        updateTasks()
+        return
     }
     
     func onTaskUndo(indexPath: IndexPath) {
-        return 
+        let task = tasks[indexPath.row]
+//        repository.deleteTask(task)
+        repository.undoTask(task)
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+        updateTasks()
+        return
     }
 }
-
-

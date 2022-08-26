@@ -9,9 +9,12 @@ import Foundation
 import CoreData
 import UIKit
 
+enum TasksFetchMode {
+    case all, completed, incompleted
+}
 class TaskRepository {
     
-    private var _tasks = [Task]()
+    private var tasks = [Task]()
     static let shared = TaskRepository()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -37,6 +40,16 @@ class TaskRepository {
         saveContext()
     }
     
+    func completeTask(_ task: Task){
+        task.completed = true
+        saveContext()
+    }
+    
+    func undoTask(_ task: Task){
+        task.completed = false
+        saveContext()
+    }
+    
     
     private func saveContext(){
         do {
@@ -47,15 +60,49 @@ class TaskRepository {
         }
     }
     
-    var tasks : [Task] {
-        
+    private func fetchAllTasks() -> [Task]{
         do {
             let request = Task.fetchRequest()
-            _tasks = try context.fetch(request).reversed()
+            return try context.fetch(request).reversed()
         } catch {
             print(error)
         }
+        return [Task]()
         
-       return _tasks
+    }
+    
+    private func fetchIncompletedTasks()->[Task]{
+        do {
+            let request = Task.fetchRequest()
+            let predicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
+            request.predicate = predicate
+            return try context.fetch(request).reversed()
+        } catch {
+            print(error)
+        }
+        return [Task]()
+    }
+    
+    private func fetchCompletedTasks() -> [Task]{
+        do {
+            let request = Task.fetchRequest()
+            let predicate = NSPredicate(format: "completed == %@", NSNumber(value: true))
+            request.predicate = predicate
+            return try context.fetch(request).reversed()
+        } catch {
+            print(error)
+        }
+        return [Task]()
+    }
+    
+    func fetchTasks(mode: TasksFetchMode) -> [Task]{
+        switch mode{
+        case .completed:
+            return fetchCompletedTasks()
+        case .incompleted:
+            return fetchIncompletedTasks()
+        case .all:
+            return fetchAllTasks()
+        }
     }
 }
