@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController" customModule="todolist" customModuleProvider="target">
             <connections>
+                <outlet property="dateTextField" destination="n4R-eB-n7K" id="I0X-TE-cPQ"/>
                 <outlet property="descriptionTextField" destination="b8x-OF-237" id="f0s-pu-rTT"/>
                 <outlet property="titleTextField" destination="PM2-0m-8a1" id="8h8-uJ-L49"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -44,10 +45,20 @@
                         </textField>
                     </subviews>
                 </stackView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-eB-n7K">
+                    <rect key="frame" x="39" y="197" width="150" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="EfO-eY-Vmx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="n4R-eB-n7K" firstAttribute="top" secondItem="BlC-eN-Rs2" secondAttribute="bottom" constant="32.670000000000002" id="Ar2-P1-jIw"/>
+                <constraint firstItem="n4R-eB-n7K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="39" id="TIW-ax-hGA"/>
                 <constraint firstItem="BlC-eN-Rs2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="luW-HG-bep"/>
                 <constraint firstItem="BlC-eN-Rs2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="49" id="pcq-rW-hZc"/>
             </constraints>

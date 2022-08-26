@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  todolist
 //
-//  Created by Leonid on 23.08.2022.
+//  Created by Leonid on 26.08.2022.
 //
 //
 
@@ -20,6 +20,7 @@ extension Task {
     @NSManaged public var deadline: Int64
     @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
+    @NSManaged public var scheduled: Bool
 
 }
 

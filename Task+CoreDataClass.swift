@@ -2,7 +2,7 @@
 //  Task+CoreDataClass.swift
 //  todolist
 //
-//  Created by Leonid on 23.08.2022.
+//  Created by Leonid on 26.08.2022.
 //
 //
 

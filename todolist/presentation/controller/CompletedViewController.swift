@@ -10,8 +10,11 @@ import UIKit
 class CompletedViewController: UITableViewController {
 
     private var tasks  = [Task]()
+    
     private let defaultCellIdentifier = Constants.Identifiers.DefaultViewCellIdentifier
-    private let customCellIdentifier = Constants.Identifiers.CustomViewCellIdentifier
+    private let taskTableViewCellIdentifier = Constants.Identifiers.TaskViewCellIdentifier
+    private let scheduledTaskTableViewIdentifier = Constants.Identifiers.ScheduledTaskViewCellIdentifier
+    
     private let repository = TaskRepository.shared
     
     override func viewDidLoad() {
@@ -20,7 +23,8 @@ class CompletedViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellIdentifier)
-        tableView.register(UINib(nibName: Constants.NibNames.TaskTableViewCellNibName, bundle: nil), forCellReuseIdentifier: customCellIdentifier)
+        tableView.register(UINib(nibName: Constants.NibNames.TaskTableViewCellNibName, bundle: nil), forCellReuseIdentifier: taskTableViewCellIdentifier)
+        tableView.register(UINib(nibName: Constants.NibNames.ScheduledTaskTableViewCellNibName, bundle: nil), forCellReuseIdentifier: scheduledTaskTableViewIdentifier)
         
         updateTasks()
     }
@@ -32,7 +36,8 @@ class CompletedViewController: UITableViewController {
 
 extension CompletedViewController{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        let task = tasks[indexPath.row]
+        return task.scheduled ?  72 : 56
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,13 +45,25 @@ extension CompletedViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! TaskTableViewCell
-        
-        cell.task = tasks[indexPath.row]
-        cell.delegate = self
-        cell.indexPath = indexPath
-        
-        return cell
+        let task = tasks[indexPath.row]
+        if(task.scheduled){
+            let cell = tableView.dequeueReusableCell(withIdentifier: scheduledTaskTableViewIdentifier) as! ScheduledTaskTableViewCell
+            
+            cell.task = task
+            cell.delegate = self
+            cell.indexPath = indexPath
+            
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: taskTableViewCellIdentifier) as! TaskTableViewCell
+            
+            cell.task = task
+            cell.delegate = self
+            cell.indexPath = indexPath
+            
+            return cell
+        }
+
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

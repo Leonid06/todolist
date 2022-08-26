@@ -24,6 +24,7 @@ class TaskRepository {
         task.title = title
         task.subtitle = description
         task.completed = false
+        task.scheduled = false
         
 //        let deadline = deadline.timeIntervalSince1970.bitPattern
 //        task.deadline = Int64(bitPattern: deadline)
@@ -48,6 +49,12 @@ class TaskRepository {
     func undoTask(_ task: Task){
         task.completed = false
         saveContext()
+    }
+    
+    func addDeadlineToTask(_ task : Task, deadline: Date){
+        task.scheduled = true
+        saveContext()
+        // TODO: add dateformatting
     }
     
     

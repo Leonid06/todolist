@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="c0w-rK-ehF" customClass="ScheduledTaskTableViewCell" customModule="todolist" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c0w-rK-ehF" id="GCw-9t-tHv">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ans-m9-Ygu">
+                        <rect key="frame" x="60" y="12" width="250" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBC-ma-xow">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="wI7-Mu-mxH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOd-Zj-IXX">
+                                <rect key="frame" x="0.0" y="20.5" width="250" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="mTy-C1-mdS">
+                                <rect key="frame" x="0.0" y="35" width="250" height="15"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note.text" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lyg-fs-3R9">
+                                        <rect key="frame" x="0.0" y="1" width="15" height="12.5"/>
+                                        <color key="tintColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="Srd-yk-32s"/>
+                                            <constraint firstAttribute="width" constant="15" id="fJX-0i-omy"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomorrow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrW-Yq-24b">
+                                        <rect key="frame" x="16" y="0.0" width="234" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-Jh-ZYL">
+                        <rect key="frame" x="19" y="12.5" width="20" height="19"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ans-m9-Ygu" firstAttribute="leading" secondItem="EvV-Jh-ZYL" secondAttribute="trailing" constant="21" id="Jaj-ff-izZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Ans-m9-Ygu" secondAttribute="trailing" constant="10" id="RXD-rz-aJd"/>
+                    <constraint firstItem="EvV-Jh-ZYL" firstAttribute="leading" secondItem="GCw-9t-tHv" secondAttribute="leading" constant="19" id="ZbR-6h-9vj"/>
+                    <constraint firstItem="Ans-m9-Ygu" firstAttribute="top" secondItem="GCw-9t-tHv" secondAttribute="top" constant="12" id="e50-Kp-Cph"/>
+                    <constraint firstItem="EvV-Jh-ZYL" firstAttribute="top" secondItem="GCw-9t-tHv" secondAttribute="top" constant="12" id="kFh-lQ-9Sw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="ptM-PC-Dcp"/>
+            <connections>
+                <outlet property="checkBoxImageView" destination="EvV-Jh-ZYL" id="VQ7-OC-Eca"/>
+                <outlet property="deadlineLabel" destination="YrW-Yq-24b" id="gJs-uP-k5W"/>
+                <outlet property="descriptionEditText" destination="aOd-Zj-IXX" id="J3q-RX-avH"/>
+                <outlet property="titleEditText" destination="YBC-ma-xow" id="MKh-FW-TVf"/>
+            </connections>
+            <point key="canvasLocation" x="105.79710144927537" y="89.0625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
