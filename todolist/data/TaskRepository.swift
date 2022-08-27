@@ -52,9 +52,10 @@ class TaskRepository {
         saveContext()
     }
     
-    func addDeadlineToTask(_ task : Task, deadline: Date){
+    func addDeadlineToTask(_ task : Task, deadline: String){
         task.scheduled = true
-        task.deadline = dateFormatter.string(from: deadline)
+        task.deadline = deadline
+        print(task.deadline)
         saveContext()
     }
     

@@ -52,7 +52,7 @@ class TaskViewController: UIViewController, UIPopoverPresentationControllerDeleg
     
     @objc private func onDatePickerValueChanged(_ sender : UIDatePicker){
         dateTextField.text = dateFormatter.string(from: sender.date)
-        repository.addDeadlineToTask(task ?? Task(), deadline: sender.date)
+        repository.addDeadlineToTask(task ?? Task(), deadline: dateTextField.text ?? "")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

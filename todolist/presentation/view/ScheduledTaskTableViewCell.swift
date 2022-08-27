@@ -32,6 +32,7 @@ class ScheduledTaskTableViewCell: UITableViewCell {
             titleEditText.text = _task.title
             descriptionEditText.text = _task.subtitle
             state = task.completed ? .selected : .unselected
+            setDeadline()
             setCheckBoxImage()
         }
         get {
@@ -42,8 +43,6 @@ class ScheduledTaskTableViewCell: UITableViewCell {
     var delegate : TaskTableViewCellDelegate?
 
     override func awakeFromNib() {
-        //TO FIX :
-//        setDate()
         super.awakeFromNib()
         
         dateFormatter.dateFormat = Constants.DateFormat
@@ -76,23 +75,24 @@ class ScheduledTaskTableViewCell: UITableViewCell {
         checkBoxImageView.image = (state == .selected) ? selectedImage : unselectedImage
     }
     
-    private func setDate() {
+    private func setDeadline() {
         if let deadline = task.deadline {
-            let calendar = Calendar.current
-            let midnight = calendar.startOfDay(for: Date())
             let date = dateFormatter.date(from: deadline)
+            print(date)
+            print(date?.tomorrow)
+            
             if(date == Date.now){
                 deadlineLabel.text = "Today"
-                deadlineLabel.tintColor = .systemPurple
-            }else if(date == calendar.date(byAdding: .day, value: 1, to: midnight)!){
-                deadlineLabel.text = "Tomorrow"
                 deadlineLabel.tintColor = .systemGreen
+            }else if(date == date?.tomorrow){
+                deadlineLabel.text = "Tomorrow"
+                deadlineLabel.tintColor = .systemPurple
             }else {
                 deadlineLabel.text = deadline
                 deadlineLabel.tintColor = .systemBlue
             }
         }
+//        print(task.deadline)
         
     }
-    
 }
