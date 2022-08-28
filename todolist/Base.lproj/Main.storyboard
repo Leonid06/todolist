@@ -54,7 +54,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="MrG-ET-rls" kind="relationship" relationship="viewControllers" id="rgS-Zz-pRp"/>
-                        <segue destination="U73-49-jJq" kind="relationship" relationship="viewControllers" id="Z76-qp-FDG"/>
+                        <segue destination="Pvi-ye-vnh" kind="relationship" relationship="viewControllers" id="3Q1-FE-xm8"/>
+                        <segue destination="U73-49-jJq" kind="relationship" relationship="viewControllers" id="yom-PI-GlV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvS-8i-E7L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -78,7 +79,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0F-je-yFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1023" y="-226"/>
+            <point key="canvasLocation" x="-1007" y="-293"/>
         </scene>
         <!--Completed-->
         <scene sceneID="83S-zA-R15">
@@ -95,7 +96,59 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enr-4a-xjm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1023" y="523"/>
+            <point key="canvasLocation" x="-913" y="465"/>
+        </scene>
+        <!--Today View Controller-->
+        <scene sceneID="Ydt-Ge-TsI">
+            <objects>
+                <tableViewController id="JrD-OQ-YeZ" customClass="TodayViewController" customModule="todolist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Neg-4w-kOd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Jxc-HW-Xux">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jxc-HW-Xux" id="4Ax-ZX-y69">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JrD-OQ-YeZ" id="xLn-ud-pWe"/>
+                            <outlet property="delegate" destination="JrD-OQ-YeZ" id="azh-eK-zAV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yXA-ig-kFh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c5j-lX-24d">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="JrD-OQ-YeZ" id="WPe-GO-Rha"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpj-aE-h0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="1240"/>
+        </scene>
+        <!--Today-->
+        <scene sceneID="Uey-Lp-fPX">
+            <objects>
+                <navigationController id="Pvi-ye-vnh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" image="note.text" catalog="system" id="g6I-kX-4MI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a7b-tz-Kh4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JrD-OQ-YeZ" kind="relationship" relationship="rootViewController" id="wfn-Jz-a9q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7y-Cq-WqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1717" y="822"/>
         </scene>
         <!--Completed View Controller-->
         <scene sceneID="hSW-dv-Y5R">
@@ -130,6 +183,7 @@
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="note" catalog="system" width="128" height="106"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

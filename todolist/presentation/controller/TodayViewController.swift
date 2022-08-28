@@ -1,14 +1,13 @@
 //
-//  CompletedViewController.swift
+//  TodayViewController.swift
 //  todolist
 //
-//  Created by Leonid on 26.08.2022.
+//  Created by Leonid on 28.08.2022.
 //
 
 import UIKit
 
-class CompletedViewController: UITableViewController {
-
+class TodayViewController: UITableViewController {
     private var tasks  = [Task]()
     
     private let defaultCellIdentifier = Constants.Identifiers.DefaultViewCellIdentifier
@@ -34,10 +33,9 @@ class CompletedViewController: UITableViewController {
     }
 }
 
-extension CompletedViewController{
+extension TodayViewController{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let task = tasks[indexPath.row]
-        return task.scheduled ?  72 : 56
+        return 56
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,24 +44,14 @@ extension CompletedViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let task = tasks[indexPath.row]
-        if(task.scheduled){
-            let cell = tableView.dequeueReusableCell(withIdentifier: scheduledTaskTableViewIdentifier) as! ScheduledTaskTableViewCell
-            
-            cell.task = task
-            cell.delegate = self
-            cell.indexPath = indexPath
-            
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: taskTableViewCellIdentifier) as! TaskTableViewCell
-            
-            cell.task = task
-            cell.delegate = self
-            cell.indexPath = indexPath
-            
-            return cell
-        }
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: taskTableViewCellIdentifier) as! TaskTableViewCell
+        
+        cell.task = task
+        cell.delegate = self
+        cell.indexPath = indexPath
+        
+        return cell
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,7 +80,7 @@ extension CompletedViewController{
     }
 }
 
-extension CompletedViewController {
+extension TodayViewController {
     @IBAction func addButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Add new task", message: nil, preferredStyle: .alert)
         
@@ -112,7 +100,7 @@ extension CompletedViewController {
                 let title = textFields[0].text
                 let description = textFields[1].text
                 
-                self.repository.addTask(title: title ?? "Default title", description: description ?? "Default description")
+                self.repository.addTodayTask(title: title ?? "Default title", description: description ?? "Default description", deadline: Date())
                 
                 self.updateTasks()
             }
@@ -128,28 +116,27 @@ extension CompletedViewController {
     }
 }
 
-extension CompletedViewController : TaskViewControllerDelegate  {
+extension TodayViewController : TaskViewControllerDelegate  {
     func refreshData() {
         self.updateTasks()
     }
     private func updateTasks(){
-        tasks = repository.fetchTasks(mode: .completed)
+        tasks = repository.fetchTasks(mode: .today)
+        print(tasks)
         tableView.reloadData()
     }
 }
 
-extension CompletedViewController : TaskTableViewCellDelegate {
+extension TodayViewController : TaskTableViewCellDelegate {
     func onTaskCompleted(indexPath : IndexPath) {
-        return
-    }
-    
-    func onTaskUndo(indexPath: IndexPath) {
         let task = tasks[indexPath.row]
-//        repository.deleteTask(task)
-        repository.undoTask(task)
+        repository.completeTask(task)
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .left)
         updateTasks()
+    }
+    
+    func onTaskUndo(indexPath: IndexPath) {
         return
     }
 }

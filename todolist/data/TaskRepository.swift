@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 
 enum TasksFetchMode {
-    case all, completed, incompleted
+    case all, completed, incompleted, today
 }
 class TaskRepository {
     
@@ -19,7 +19,22 @@ class TaskRepository {
     private let dateFormatter = DateFormatter()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func addTask(title : String, description: String, deadline : NSDate){
+    init(){
+        dateFormatter.dateFormat = Constants.DateFormat
+    }
+    
+    func addTask(title : String, description: String){
+        let task = Task(context: context)
+        
+        task.title = title
+        task.subtitle = description
+        task.completed = false
+        task.scheduled = false
+    
+        saveContext()
+    }
+    
+    func addTodayTask(title : String, description: String, deadline : Date){
         let task = Task(context: context)
         
         task.title = title
@@ -27,8 +42,7 @@ class TaskRepository {
         task.completed = false
         task.scheduled = false
         
-//        let deadline = deadline.timeIntervalSince1970.bitPattern
-//        task.deadline = Int64(bitPattern: deadline)
+        task.deadline = dateFormatter.string(from: deadline)
         
         saveContext()
     }
@@ -55,7 +69,6 @@ class TaskRepository {
     func addDeadlineToTask(_ task : Task, deadline: String){
         task.scheduled = true
         task.deadline = deadline
-        print(task.deadline)
         saveContext()
     }
     
@@ -78,6 +91,23 @@ class TaskRepository {
         }
         return [Task]()
         
+    }
+    
+    private func fetchTodayTasks()->[Task]{
+        do {
+            let today = dateFormatter.string(from: Date())
+            let request = Task.fetchRequest()
+            
+            let todayPredicate = NSPredicate(format: "deadline == %@", today)
+            let incompletedPredicate = NSPredicate(format: "completed == %@", NSNumber(value: false))
+            let finalPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [todayPredicate, incompletedPredicate])
+            
+            request.predicate = finalPredicate
+            return try context.fetch(request).reversed()
+        } catch {
+            print(error)
+        }
+        return [Task]()
     }
     
     private func fetchIncompletedTasks()->[Task]{
@@ -112,6 +142,8 @@ class TaskRepository {
             return fetchIncompletedTasks()
         case .all:
             return fetchAllTasks()
+        case .today:
+            return fetchTodayTasks()
         }
     }
 }

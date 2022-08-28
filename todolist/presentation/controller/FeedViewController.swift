@@ -110,7 +110,7 @@ extension FeedViewController {
                 let title = textFields[0].text
                 let description = textFields[1].text
                 
-                self.repository.addTask(title: title ?? "Default title", description: description ?? "Default description", deadline: NSDate())
+                self.repository.addTask(title: title ?? "Default title", description: description ?? "Default description")
                 
                 self.updateTasks()
             }

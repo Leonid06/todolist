@@ -78,8 +78,8 @@
             filePath = "todolist/data/TaskRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "deleteTask(_:)"
             landmarkType = "7">
          </BreakpointContent>
