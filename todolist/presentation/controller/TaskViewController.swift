@@ -45,6 +45,20 @@ class TaskViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     private func setupDatePicker(){
+        if let deadline = task?.deadline {
+            if let scheduled = task?.scheduled {
+                if(scheduled){
+                    datePicker.date = dateFormatter.date(from: deadline) ?? Date()
+                    dateTextField.text = deadline}
+//                } else {
+//                    let date = Date()
+//                    datePicker.date = date
+//                    dateTextField.text = dateFormatter.string(from: date)
+//                }
+            }
+           
+        }
+        datePicker.date = Date()
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(onDatePickerValueChanged), for: UIControl.Event.valueChanged)

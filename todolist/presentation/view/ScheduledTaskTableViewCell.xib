@@ -74,6 +74,7 @@
                 <outlet property="checkBoxImageView" destination="EvV-Jh-ZYL" id="VQ7-OC-Eca"/>
                 <outlet property="deadlineLabel" destination="YrW-Yq-24b" id="gJs-uP-k5W"/>
                 <outlet property="descriptionEditText" destination="aOd-Zj-IXX" id="J3q-RX-avH"/>
+                <outlet property="scheduleImageView" destination="lyg-fs-3R9" id="dme-ky-ue3"/>
                 <outlet property="titleEditText" destination="YBC-ma-xow" id="MKh-FW-TVf"/>
             </connections>
             <point key="canvasLocation" x="105.79710144927537" y="89.0625"/>

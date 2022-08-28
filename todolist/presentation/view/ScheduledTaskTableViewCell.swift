@@ -15,6 +15,7 @@ class ScheduledTaskTableViewCell: UITableViewCell {
     
     private let dateFormatter = DateFormatter()
     
+    @IBOutlet weak var scheduleImageView: UIImageView!
     @IBOutlet weak var titleEditText: UILabel!
     @IBOutlet weak var descriptionEditText: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
@@ -76,20 +77,27 @@ class ScheduledTaskTableViewCell: UITableViewCell {
     }
     
     private func setDeadline() {
+        
         if let deadline = task.deadline {
-            let date = dateFormatter.date(from: deadline)
-            print(date)
-            print(date?.tomorrow)
             
-            if(date == Date.now){
+            deadlineLabel.text =  deadline
+            let today = dateFormatter.string(from: Date())
+            let tomorrow = dateFormatter.string(from: Date().tomorrow ?? Date())
+//            print(date)
+//            print(date?.tomorrow)
+            
+            if(deadline == today){
                 deadlineLabel.text = "Today"
-                deadlineLabel.tintColor = .systemGreen
-            }else if(date == date?.tomorrow){
+                deadlineLabel.textColor = .systemGreen
+                scheduleImageView.tintColor = .systemGreen
+            }else if(deadline == tomorrow){
                 deadlineLabel.text = "Tomorrow"
-                deadlineLabel.tintColor = .systemPurple
+                deadlineLabel.textColor = .systemPurple
+                scheduleImageView.tintColor = .systemPurple
             }else {
                 deadlineLabel.text = deadline
-                deadlineLabel.tintColor = .systemBlue
+                deadlineLabel.textColor = .systemBlue
+                scheduleImageView.tintColor = .systemBlue
             }
         }
 //        print(task.deadline)
