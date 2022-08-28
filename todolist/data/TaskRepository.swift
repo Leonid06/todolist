@@ -40,7 +40,7 @@ class TaskRepository {
         task.title = title
         task.subtitle = description
         task.completed = false
-        task.scheduled = false
+        task.scheduled =  true 
         
         task.deadline = dateFormatter.string(from: deadline)
         
