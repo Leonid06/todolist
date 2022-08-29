@@ -55,24 +55,15 @@ class TaskViewController: UIViewController, UIPopoverPresentationControllerDeleg
 //                    datePicker.date = date
 //                    dateTextField.text = dateFormatter.string(from: date)
 //                }
+                else {
+                    datePicker.date = Date()
+                }
             }
            
         }
-        datePicker.date = Date()
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(onDatePickerValueChanged), for: UIControl.Event.valueChanged)
-    }
-    
-    @objc private func onDatePickerValueChanged(_ sender : UIDatePicker){
-        dateTextField.text = dateFormatter.string(from: sender.date)
-        repository.addDeadlineToTask(task ?? Task(), deadline: dateTextField.text ?? "")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        repository.updateTasks()
-        delegate?.refreshData()
-        print("tasks updated")
     }
 }
 
@@ -93,5 +84,24 @@ extension TaskViewController : UITextFieldDelegate {
         task?.subtitle = descriptionTextField.text
     }
     
+    @IBAction func todayButtonPressed(_ sender: Any) {
+        dateTextField.text = dateFormatter.string(from: Date())
+        repository.addDeadlineToTask(task ?? Task(), deadline: dateTextField.text ?? "")
+    }
+    @IBAction func tomorrowButtonPressed(_ sender: Any) {
+        dateTextField.text = dateFormatter.string(from: Date().tomorrow ?? Date())
+        repository.addDeadlineToTask(task ?? Task(), deadline: dateTextField.text ?? "")
+    }
+    
+    @objc private func onDatePickerValueChanged(_ sender : UIDatePicker){
+        dateTextField.text = dateFormatter.string(from: sender.date)
+        repository.addDeadlineToTask(task ?? Task(), deadline: dateTextField.text ?? "")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        repository.updateTasks()
+        delegate?.refreshData()
+        print("tasks updated")
+    }
 }
 
